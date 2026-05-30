@@ -41,7 +41,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex">
+<body id="appBody" class="bg-slate-900 text-slate-100 font-sans min-h-screen flex transition-colors duration-300">
 
     <!-- ================= SCREEN 1: AUTHENTICATION ================= -->
     <div id="authScreen" class="fixed inset-0 bg-slate-950 flex items-center justify-center z-50 p-4">
@@ -50,7 +50,7 @@
                 <div class="bg-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center text-white mx-auto mb-3 shadow-lg">
                     <i class="fa-solid fa-cash-register text-xl"></i>
                 </div>
-                <h2 class="text-2xl font-black text-white tracking-wide">JayaHome</h2>
+                <h2 class="text-5xl font-black text-white tracking-wide">JayaHome</h2>
                 <p class="text-xs text-slate-400 mt-1">Silakan masuk menggunakan akun kredensial pusat Anda.</p>
             </div>
             <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
@@ -68,7 +68,7 @@
     </div>
 
     <!-- ================= SCREEN 2: MAIN APPLICATION SYSTEM ================= -->
-    <aside class="w-64 bg-slate-950 border-r border-slate-800 p-5 flex flex-col justify-between hidden md:flex">
+    <aside class="hidden md:flex flex-col w-64 bg-slate-950 border-r border-slate-800 p-4 ...">
         <div>
             <div class="flex items-center space-x-3 mb-8">
                 <div class="bg-indigo-600 p-2 rounded-lg text-white"><i class="fa-solid fa-tower-cell text-xl"></i></div>
@@ -78,14 +78,14 @@
             <div class="mb-4">
                 <p class="text-[20px] font-bold text-slate-500 uppercase tracking-widest px-3 mb-2">Menu Utama</p>
                 <nav class="space-y-1">
-                    <button onclick="gantiMenu('dashboard')" id="menu-dashboard" class="w-full flex items-center space-x-3 bg-indigo-600/10 text-indigo-400 p-2.5 rounded-lg font-semibold text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-chart-pie w-5"></i> <span>Dashboard</span>
+                    <button onclick="gantiMenu('dashboard')" id="menu-dashboard" class="w-full flex items-center space-x-3 bg-indigo-600/10 text-indigo-400 p-3.5 rounded-lg font-semibold text-2xl cursor-pointer text-left">
+                        <i class="fa-solid fa-chart-pie w-10"></i> <span>Dashboard</span>
                     </button>
-                    <button onclick="gantiMenu('pelanggan')" id="menu-pelanggan" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-users w-5"></i> <span>Kelola Pelanggan</span>
+                    <button onclick="gantiMenu('pelanggan')" id="menu-pelanggan" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-3.5 rounded-lg text-2xl cursor-pointer text-left">
+                        <i class="fa-solid fa-users w-10"></i> <span>Kelola Pelanggan</span>
                     </button>
-                    <button onclick="gantiMenu('riwayat')" id="menu-riwayat" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-file-invoice-dollar w-5"></i> <span>Riwayat Transaksi</span>
+                    <button onclick="gantiMenu('riwayat')" id="menu-riwayat" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-3.5 rounded-lg text-2xl cursor-pointer text-left">
+                        <i class="fa-solid fa-file-invoice-dollar w-10"></i> <span>Riwayat Transaksi</span>
                     </button>
                 </nav>
             </div>
@@ -93,14 +93,14 @@
             <div class="mb-4">
                 <p class="text-[20px] font-bold text-slate-500 uppercase tracking-widest px-3 mb-2">Operasional</p>
                 <nav class="space-y-1">
-                    <button onclick="gantiMenu('pengeluaran')" id="menu-pengeluaran" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-money-bill-transfer w-5"></i> <span>Kas & Pengeluaran</span>
+                    <button onclick="gantiMenu('pengeluaran')" id="menu-pengeluaran" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-2x cursor-pointer text-left">
+                        <i class="fa-solid fa-money-bill-transfer w-10"></i> <span>Kas & Pengeluaran</span>
                     </button>
                     <button onclick="gantiMenu('komplain')" id="menu-komplain" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-headset w-5"></i> <span>Tiket Komplain</span>
+                        <i class="fa-solid fa-headset w-10"></i> <span>Tiket Komplain</span>
                     </button>
                     <button onclick="gantiMenu('paket')" id="menu-paket" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-sliders w-5"></i> <span>Pengaturan Paket</span>
+                        <i class="fa-solid fa-sliders w-10"></i> <span>Pengaturan Paket</span>
                     </button>
                 </nav>
             </div>
@@ -109,19 +109,29 @@
                 <p class="text-[20px] font-bold text-slate-500 uppercase tracking-widest px-3 mb-2">Sistem</p>
                 <nav class="space-y-1">
                     <button onclick="gantiMenu('setting')" id="menu-setting" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-gear w-5"></i> <span>Pengaturan Web</span>
+                        <i class="fa-solid fa-gear w-10"></i> <span>Pengaturan Web</span>
                     </button>
                     <button onclick="gantiMenu('backup')" id="menu-backup" class="w-full flex items-center space-x-3 text-slate-400 hover:bg-slate-800/50 hover:text-white p-2.5 rounded-lg text-sm cursor-pointer text-left">
-                        <i class="fa-solid fa-database w-5"></i> <span>Backup & Restore</span>
+                        <i class="fa-solid fa-database w-10"></i> <span>Backup & Restore</span>
                     </button>
                 </nav>
             </div>
         </div>
         <div>
-            <button onclick="handleLogout()" class="w-full flex items-center space-x-3 text-red-400 hover:bg-red-500/10 p-2.5 rounded-lg text-sm font-bold cursor-pointer text-left mb-2">
-                <i class="fa-solid fa-right-from-bracket w-5"></i> <span>Keluar </span>
+            <div class="border-t border-slate-800 pt-4 space-y-2">
+            <button onclick="toggleTheme()" id="themeToggleBtn" class="w-full flex items-center justify-center space-x-2 bg-slate-900 border border-slate-800 text-slate-300 hover:text-white p-2.5 rounded-lg text-sm font-semibold cursor-pointer transition-all">
+                <i id="themeIcon" class="fa-solid fa-sun text-amber-400"></i> <span id="themeText">Mode Terang</span>
             </button>
-            <div class="text-[10px] text-slate-600 border-t border-slate-800 pt-3 text-center font-mono">COMPLETE POS V7.6</div>
+            
+            <button onclick="handleLogout()" class="w-full flex items-center space-x-3 text-red-400 hover:bg-red-500/10 p-2.5 rounded-lg text-sm font-bold cursor-pointer text-left">
+                <i class="fa-solid fa-right-from-bracket w-5"></i> <span>Keluar Aplikasi</span>
+            </button>
+            
+            <div class="text-[10px] text-slate-600 pt-4 text-center font-mono">COMPLETE BILLING V7.6</div>
+        </div>
+    </aside>
+    </button>
+</div>      
         </div>
     </aside>
 
@@ -137,24 +147,24 @@
 
         <!-- ================= PANEL METRIK UTAMA ================= -->
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
-                <div><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Total User</p><h3 class="text-xl font-black text-white" id="statTotal">0 User</h3></div>
+            <div class="bg-slate-950 p-4 rounded-full border border-slate-800 flex items-center justify-between">
+                <div><p class="text-[15px] text-#ffffff-400 uppercase font-bold tracking-wider mb-4">Total User</p><h3 class="text-xl font-black text-white" id="statTotal">0 User</h3></div>
                 <div class="bg-blue-500/10 text-blue-400 p-2.5 rounded-lg"><i class="fa-solid fa-users text-md"></i></div>
             </div>
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
-                <div><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Omset Cash</p><h3 class="text-xl font-black text-green-400" id="statOmsetCash">Rp 0</h3></div>
+            <div class="bg-slate-950 p-4 rounded-full border border-slate-800 flex items-center justify-between">
+                <div><p class="text-[15px] text-slate-400 uppercase font-bold tracking-wider mb-4">Omset Cash</p><h3 class="text-xl font-black text-green-400" id="statOmsetCash">Rp 0</h3></div>
                 <div class="bg-green-500/10 text-green-400 p-2.5 rounded-lg"><i class="fa-solid fa-money-bill-wave text-md"></i></div>
             </div>
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
-                <div><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Omset Transfer</p><h3 class="text-xl font-black text-purple-400" id="statOmsetTransfer">Rp 0</h3></div>
+            <div class="bg-slate-950 p-4 rounded-full border border-slate-800 flex items-center justify-between">
+                <div><p class="text-[15px] text-slate-400 uppercase font-bold tracking-wider mb-1">Omset Transfer</p><h3 class="text-xl font-black text-purple-400" id="statOmsetTransfer">Rp 0</h3></div>
                 <div class="bg-purple-500/10 text-purple-400 p-2.5 rounded-lg"><i class="fa-solid fa-credit-card text-md"></i></div>
             </div>
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
-                <div><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Sisa Bersih Kas</p><h3 class="text-xl font-black text-cyan-400" id="statLabaBersih">Rp 0</h3></div>
+            <div class="bg-slate-950 p-4 rounded-full border border-slate-800 flex items-center justify-between">
+                <div><p class="text-[15px] text-slate-400 uppercase font-bold tracking-wider mb-1">Sisa Bersih Kas</p><h3 class="text-xl font-black text-cyan-400" id="statLabaBersih">Rp 0</h3></div>
                 <div class="bg-cyan-500/10 text-cyan-400 p-2.5 rounded-lg"><i class="fa-solid fa-sack-dollar text-md"></i></div>
             </div>
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
-                <div><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider mb-1">Komplain</p><h3 class="text-xl font-black text-red-400" id="statKomplainCount">0 Tiket</h3></div>
+                <div><p class="text-[20px] text-slate-400 uppercase font-bold tracking-wider mb-1">Komplain</p><h3 class="text-xl font-black text-red-400" id="statKomplainCount">0 Tiket</h3></div>
                 <div class="bg-red-500/10 text-red-400 p-2.5 rounded-lg"><i class="fa-solid fa-triangle-exclamation text-md"></i></div>
             </div>
         </section>
@@ -193,7 +203,7 @@
         <!-- VIEW 2: KELOLA PELANGGAN -->
         <div id="pelangganView" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 h-fit">
-                <h3 class="text-md font-bold text-white mb-4"><i class="fa-solid fa-user-plus text-indigo-500 mr-2"></i> Form Registrasi Client</h3>
+                <h3 class="text-md font-bold text-white mb-5"><i class="fa-solid fa-user-plus text-indigo-500 mr-2"></i> Form Registrasi Client</h3>
                 <form id="proForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
                     <input type="hidden" id="customerId">
                     
@@ -409,7 +419,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
+	
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyB5iWDJLLz81QUDDLIdD4ApPjhoSrLKeP4",
@@ -423,6 +433,48 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
+		// ================= LOGIKA AMBIL & UBAH TEMA (DARK/LIGHT MODE) =================
+        function pasangTemaAwal() {
+            const temaTersimpan = localStorage.getItem('billing_theme') || 'dark';
+            const body = document.getElementById('appBody');
+            const btnText = document.getElementById('themeText');
+            const btnIcon = document.getElementById('themeIcon');
+
+            if (temaTersimpan === 'light') {
+                // Setel komponen visual ke Mode Terang (Aplikasi Putih)
+                body.classList.remove('bg-slate-900', 'text-slate-100');
+                body.classList.add('bg-slate-50', 'text-slate-800');
+                if(btnText) btnText.innerText = "Mode Gelap";
+                if(btnIcon) {
+                    btnIcon.classList.remove('fa-sun', 'text-amber-400');
+                    btnIcon.classList.add('fa-moon', 'text-indigo-400');
+                }
+            } else {
+                // Kembalikan ke Mode Gelap (Bawaan Aplikasi)
+                body.classList.remove('bg-slate-50', 'text-slate-800');
+                body.classList.add('bg-slate-900', 'text-slate-100');
+                if(btnText) btnText.innerText = "Mode Terang";
+                if(btnIcon) {
+                    btnIcon.classList.remove('fa-moon', 'text-indigo-400');
+                    btnIcon.classList.add('fa-sun', 'text-amber-400');
+                }
+            }
+        }
+
+        function toggleTheme() {
+            const temaSaatIni = localStorage.getItem('billing_theme') || 'dark';
+            if (temaSaatIni === 'dark') {
+                localStorage.setItem('billing_theme', 'light');
+            } else {
+                localStorage.setItem('billing_theme', 'dark');
+            }
+            pasangTemaAwal(); // Jalankan perubahan warna halaman
+        }
+
+        // Jalankan pengecekan tema otomatis setiap kali halaman web dimuat (refresh)
+        document.addEventListener("DOMContentLoaded", () => {
+            pasangTemaAwal();
+        });
 
         let cacheCustomers = [], cacheExpenses = [], cacheTickets = [], cachePakets = [];
         const defaultSettings = { brandName: "WIFI-NET PRO", whatsappTemplate: "Halo [nama], tagihan anda lunas." };
@@ -731,6 +783,7 @@
         
         function liveSearch() { const q = document.getElementById('searchBar').value.toLowerCase(); document.querySelectorAll('.crm-row').forEach(r => { r.style.display = r.querySelector('.search-name').innerText.toLowerCase().includes(q) ? '' : 'none'; }); }
         function clearForm() { document.getElementById('proForm').reset(); document.getElementById('customerId').value = ""; document.getElementById('custUID').value = ""; setDefaultDate(); }
-    </script>
+    
+	</script>
 </body>
 </html>
